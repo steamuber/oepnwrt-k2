@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build Main OpenWrt
+name: sxnwzz@126.com
 
 on:
   repository_dispatch:
