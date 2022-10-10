@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: sxnwzz@126.com
+name: Build Main OpenWrt
 
 on:
   repository_dispatch:
@@ -87,12 +87,7 @@ jobs:
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-    
-    # - name: Get Firmware Taget
-    #   run: |
-    #     cd openwrt
-    #     target=$(grep "^CONFIG_TARGET" .config --max-count=1 | awk -F "=" '{print $1}' | awk -F "_" '{print $3}')
-    #     echo -e "\nCONFIG_NETFILTER_NETLINK_GLUE_CT=y" >> target/linux/$target/config*
+
     - name: Download package
       id: package
       run: |
@@ -168,7 +163,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: Main-${{ steps.tag.outputs.release_tag }}
+        tag_name: test-${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
